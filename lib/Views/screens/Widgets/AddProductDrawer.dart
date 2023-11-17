@@ -114,8 +114,8 @@ class _AddProductDrawerState extends State<AddProductDrawer> {
               children: [
                 Expanded(
                   child: ElevButton(
-                    text: _editProduct == null ? 'Add Product' : 'Edit',
-                    icon: _editProduct == null ? Icons.add : Icons.edit,
+                    text: _editProduct == null ? 'Save' : 'Edit',
+                    icon: _editProduct == null ? Icons.save : Icons.edit,
                     onPressed: () {
                       if (_editProduct == null) {
                         Provider.of<ProductProvider>(context, listen: false)
@@ -128,21 +128,6 @@ class _AddProductDrawerState extends State<AddProductDrawer> {
                     },
                   ),
                 ),
-                // _editProduct != null
-                //     ? Padding(
-                //         padding: const EdgeInsets.only(left: 5),
-                //         child: ElevButton(
-                //           text: 'Delete',
-                //           icon: Icons.delete,
-                //           color: Colors.red,
-                //           onPressed: () {
-                //             Provider.of<ProductProvider>(context, listen: false)
-                //                 .deleteProduct(_editProduct!);
-                //             Navigator.of(context).pop();
-                //           },
-                //         ),
-                //       )
-                // : const SizedBox(),
               ],
             ),
           ],

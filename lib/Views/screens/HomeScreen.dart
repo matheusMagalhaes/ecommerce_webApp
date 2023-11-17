@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Products 💰',
+                  'Products management 💰',
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 ElevButton(
