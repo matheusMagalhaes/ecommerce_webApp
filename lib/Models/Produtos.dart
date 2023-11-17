@@ -5,6 +5,8 @@ class Produtos {
   String? imagem;
   double? preco;
 
+  Produtos.empty();
+
   Produtos({
     required this.id,
     required this.nome,
@@ -13,8 +15,7 @@ class Produtos {
     required this.preco,
   });
 
-  Produtos.empty();
-
+  @override
   factory Produtos.fromJson(Map<String, dynamic> json) {
     return Produtos(
         id: json['id'],
@@ -24,6 +25,7 @@ class Produtos {
         preco: json['preco']);
   }
 
+  @override
   Map<String, dynamic> toJson(Produtos produto) {
     return {
       "id": produto.id,

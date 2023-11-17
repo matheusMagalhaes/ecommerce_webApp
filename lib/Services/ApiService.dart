@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  final String _baseUrl = 'http://localhost:8080/api';
+  final String _baseUrl = 'http://localhost:8080/api/store-products/';
 
   final Map<String, String> _headers = {
     "content-type": "application/json",
@@ -20,7 +20,7 @@ class ApiService {
     }
   }
 
-  Future<http.Response> post(String url, Map<String, String> params) async {
+  Future<http.Response> post(String url, Map<String, dynamic> params) async {
     try {
       Uri uri = Uri.parse(_baseUrl + url);
       String? body;
@@ -33,7 +33,7 @@ class ApiService {
     }
   }
 
-  Future<http.Response> put(String url, Map<String, String> params) async {
+  Future<http.Response> put(String url, Map<String, dynamic> params) async {
     try {
       Uri uri = Uri.parse(_baseUrl + url);
       String? body;
