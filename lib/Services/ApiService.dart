@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:products_app/Models/Produtos.dart';
 
 class ApiService {
-  final String _baseUrl = 'http://localhost:8080/api/store-products/';
+  final String _baseUrl = 'http://10.0.2.2:8080/api/store-products/';
 
   final Map<String, String> _headers = {
     "content-type": "application/json",
@@ -20,26 +21,25 @@ class ApiService {
     }
   }
 
-  Future<http.Response> post(String url, Map<String, dynamic> params) async {
+  Future<http.Response> post(String url, Produtos body) async {
     try {
       Uri uri = Uri.parse(_baseUrl + url);
-      String? body;
-      json.encode(body);
+      dynamic prd = json.encode(body.toJson(body));
 
-      http.Response res = await http.post(uri, headers: _headers, body: body);
+      http.Response res = await http.post(uri, headers: _headers, body: prd);
       return res;
     } catch (e) {
-      return http.Response({"message": e}.toString(), 400);
+      throw new Exception(e);
     }
   }
 
-  Future<http.Response> put(String url, Map<String, dynamic> params) async {
+  Future<http.Response> put(String url, Map<String, dynamic> body) async {
     try {
       Uri uri = Uri.parse(_baseUrl + url);
-      String? body;
-      json.encode(body);
+      String? stringBody = json.encode(body);
 
-      http.Response res = await http.put(uri, headers: _headers, body: body);
+      http.Response res =
+          await http.put(uri, headers: _headers, body: stringBody);
       return res;
     } catch (e) {
       return http.Response({"message": e}.toString(), 400);
