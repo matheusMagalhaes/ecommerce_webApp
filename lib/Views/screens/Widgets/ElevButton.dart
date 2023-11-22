@@ -17,7 +17,7 @@ class ElevButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(primary: color ?? BTN_COLOR),
+      style: ElevatedButton.styleFrom(backgroundColor: color ?? BTN_COLOR),
       onPressed: () {
         onPressed();
       },
@@ -33,4 +33,5 @@ class ElevButton extends StatelessWidget {
       ),
     );
   }
+
 }

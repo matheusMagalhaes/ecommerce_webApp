@@ -37,13 +37,15 @@ class ProdutoRepository {
   }
 
   Future<Produtos> addProduct(Produtos produto) async {
-    http.Response res =
-        await _apiSevice.post('add-new-product', produto.toJson(produto));
-    dynamic responseJson = jsonDecode(res.body);
-    final jsonData = responseJson['data'];
-    Produtos savedProduct = Produtos.fromJson(jsonData);
-
-    return savedProduct;
+    http.Response res = await _apiSevice.post('add-new-product', produto);
+    try {
+      dynamic responseJson = json.decode(res.body);
+      final jsonData = responseJson['data'];
+      Produtos savedProduct = Produtos.fromJson(jsonData);
+      return savedProduct;
+    } catch (e) {
+      throw new Exception(e);
+    }
   }
 
   Future<Produtos> editProduct(Produtos produto) async {
